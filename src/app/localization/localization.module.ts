@@ -1,16 +1,15 @@
 import { NgModule,APP_INITIALIZER } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LanguageService } from './language.service';
+import { LocalizationService } from './localization.service';
 
 /**
  * Exported function so that it works with AOT
- * @param {LanguageService} configService
+ * @param {LocalizationService} localizationService
  * @returns {Function}
  */
-export function loadLanguageService(languageService: LanguageService): Function
-
+export function loadlocalizationService(localizationService:LocalizationService ): Function
 {
-  return () => { return languageService.load() };
+  return () => { return localizationService.load() };
 }
 
 
@@ -19,6 +18,6 @@ export function loadLanguageService(languageService: LanguageService): Function
     CommonModule
   ],
   declarations: [],
-  providers: [LanguageService,{ provide: APP_INITIALIZER, useFactory: loadLanguageService , deps: [LanguageService], multi: true }]
+  providers: []
 })
 export class LocalizationModule { }

@@ -1,2 +1,2 @@
 window.config = {};
-window.config['LOCALIZATION_SOURCE'] = 'asset/config/i18n/en.json';
+window.config['LOCALIZATION_SOURCE'] = 'assets/i18n/sn.json';

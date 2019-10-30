@@ -1,21 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {LocalizationService} from './localization/localization.service';
-import {loadLanguageService} from './localization/localization.module';
+import {loadlocalizationService, LocalizationModule} from './localization/localization.module';
+import { HttpClient,HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent,HttpModule
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    LocalizationModule 
   ],
   providers: [  LocalizationService,
-    { provide: APP_INITIALIZER, useFactory: loadLanguageService , deps: [HttpClient,LocalizationService], multi: true }],
+    { provide: APP_INITIALIZER, useFactory: loadlocalizationService , deps: [LocalizationService], multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

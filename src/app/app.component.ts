@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LAN_CONFIG } from './localization/localization.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angularapp';
+  title = LAN_CONFIG['NAME'];
 }

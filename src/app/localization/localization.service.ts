@@ -39,6 +39,7 @@ export class LocalizationService {
       }).subscribe((envResponse :any) => {
         let t = new LanConfig();
         //Modify envResponse here if needed (e.g. to ajust parameters for https,...)
+        console.log(envResponse)
         LAN_CONFIG = Object.assign(t, envResponse);
         resolve(true);
       });
