@@ -1,21 +1,24 @@
 pipeline {
-   agent any
-      environment {
-         PATH='/usr/local/bin:/usr/bin:/bin'
-      }
-   stages {
-      stage('NPM Setup') {
-      steps {
-         sh 'npm install'
-      }
-   }
+    agent any
+    stages {
+        stage('Install node Packages') {
 
+            steps {
+                bat 'npm install'
+            }
+        }
+        stage('Build Project') {
 
+            steps {
+                bat "npm run build"
+            }
+        }
+        stage('Deploy Project To Tomcat') {
 
-   stage('Stage Web Build') {
-      steps {
-        sh 'npm run build --prod'
+            steps {
+                bat "XCOPY \"C:\\Program Files (x86)\\Jenkins\\workspace\\angular-automation-local\\dist\\angularapp\\*\" \"C:\\apache-tomcat-9.0.1-windows-x64\\webapps\\angular-test-app\" /i"
+            }
+        }
+
     }
-  }
- }
 }
