@@ -22,7 +22,9 @@ pipeline {
         //}
          stage('Deploy Project To Tomcat Server') {
                         steps {
-                              bat "pscp -pw tbx_cglinux \"C:\\Program Files (x86)\\Jenkins\\workspace\\angular-pipeline\\dist\\angularapp\\*\" root@192.168.1.170:/usr/local/tomcat9/webapps/angular-test-app"
+                          withCredentials([string(credentialsId: 'server-login', variable: 'serverlogin')]) {
+                            bat "pscp -pw ${serverlogin} \"C:\\Program Files (x86)\\Jenkins\\workspace\\angular-pipeline\\dist\\angularapp\\*\" root@192.168.1.170:/usr/local/tomcat9/webapps/angular-test-app"
+                              }
                         }
 
 
